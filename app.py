@@ -1,41 +1,40 @@
+#plotly interactive plots
+#!pip install dash==2.11.1
 
-... import pandas as np
-... import dash
-... from dash import html, dcc
-... from dash.dependencies import Input, Output
-... from dash import dash_table
-... 
-... import plotly.graph_objects as go
-...
-...
-... import numpy as np
-... 
-... 
-... # -------------------------------------------------------------
-... # LOAD DATA
-... # -------------------------------------------------------------
-... df = pd.read_csv("electric-car-stocks.csv")
-... df.columns = df.columns.str.strip()
-... df["Year"] = df["Year"].astype(int)
-... entities = sorted(df["Entity"].unique())
-... 
-... # -------------------------------------------------------------
-... # CREATE DASH APP
-... # -------------------------------------------------------------
-... app = dash.Dash(__name__, suppress_callback_exceptions=True)
-... server = app.server
-... 
-... # -------------------------------------------------------------
-... # LAYOUT
-... # -------------------------------------------------------------
-... app.layout = html.Div([
-...     html.H1("Electric Car Stocks Dashboard", style={"textAlign": "center"}),
-... 
-...     dcc.Tabs(id="mainTabs", value="overviewTab", children=[
-...         dcc.Tab(label="Overview", value="overviewTab"),
-...         dcc.Tab(label="Graphics (Nested Tabs)", value="graphicsTab"),
-...         dcc.Tab(label="Data Table", value="tableTab"),
-...         dcc.Tab(label="Summary Statistics", value="summaryTab"),
+import dash
+from dash import html, dcc
+from dash.dependencies import Input, Output
+from dash import dash_table
+import pandas as pd
+import plotly.graph_objects as go
+import numpy as np
+
+
+# -------------------------------------------------------------
+# LOAD DATA
+# -------------------------------------------------------------
+df = pd.read_csv("electric-car-stocks.csv")
+df.columns = df.columns.str.strip()
+df["Year"] = df["Year"].astype(int)
+entities = sorted(df["Entity"].unique())
+
+# -------------------------------------------------------------
+# CREATE DASH APP
+# -------------------------------------------------------------
+app = dash.Dash(__name__, suppress_callback_exceptions=True)
+server = app.server
+
+# -------------------------------------------------------------
+# LAYOUT
+# -------------------------------------------------------------
+app.layout = html.Div([
+    html.H1("Electric Car Stocks Dashboard", style={"textAlign": "center"}),
+
+    dcc.Tabs(id="mainTabs", value="overviewTab", children=[
+        dcc.Tab(label="Overview", value="overviewTab"),
+        dcc.Tab(label="Graphics (Nested Tabs)", value="graphicsTab"),
+        dcc.Tab(label="Data Table", value="tableTab"),
+        dcc.Tab(label="Summary Statistics", value="summaryTab"),
     ]),
 
     html.Hr(),
