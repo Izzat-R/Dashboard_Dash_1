@@ -1,14 +1,14 @@
 
-... 
+... import pandas as np
 ... import dash
 ... from dash import html, dcc
 ... from dash.dependencies import Input, Output
 ... from dash import dash_table
-... import pandas as pd
-... import plotly.graph_objects as go
-... import numpy as np
-... import os
 ... 
+... import plotly.graph_objects as go
+...
+...
+... import numpy as np
 ... 
 ... 
 ... # -------------------------------------------------------------
