@@ -1,6 +1,4 @@
-Python 3.14.8 (v3.14.8:8e6e75d9102, Sep 30 2026, 14:34:30) [Clang 21.0.0 (clang-2100.1.1.101)] on darwin
-Enter "help" below or click "Help" above for more information.
->>> 
+
 ... 
 ... import dash
 ... from dash import html, dcc
@@ -16,7 +14,7 @@ Enter "help" below or click "Help" above for more information.
 ... # -------------------------------------------------------------
 ... # LOAD DATA
 ... # -------------------------------------------------------------
-... df = pd.read_csv("/Users/izzat/Documents/Academics/Minho/Dashboard cars/electric-car-stocks.csv")
+... df = pd.read_csv("electric-car-stocks.csv")
 ... df.columns = df.columns.str.strip()
 ... df["Year"] = df["Year"].astype(int)
 ... entities = sorted(df["Entity"].unique())
